@@ -324,6 +324,13 @@ class Input
 			$this->setTextColor( $randomColor["t"] );
 
 			return $randomColor["b"];
+		}else{
+			$r = hexdec(substr($background, 0, 2));
+			$g = hexdec(substr($background, 2, 2));
+			$b = hexdec(substr($background, 4, 2));
+
+			$color = $r*0.299 + $g*0.587 + $b*0.114 > 127 ? '000000' : 'FFFFFF';
+			$this->setTextColor( $color );
 		}
 
 		return $background;
